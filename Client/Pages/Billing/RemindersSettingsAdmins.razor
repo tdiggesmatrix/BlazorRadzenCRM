@@ -1,0 +1,104 @@
+@page "/reminders-settings-admins"
+@attribute [Authorize]
+
+<PageTitle>RemindersSettingsAdmins</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="RemindersSettingsAdmins" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@remindersSettingsAdmins" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="dealercode" Title="dealercode">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="processweeks" Title="processweeks">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_mail" Title="seedmail">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_name" Title="seedname">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_address" Title="seedaddress">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_city" Title="seedcity">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_state" Title="seedstate">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_zip" Title="seedzip">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_email" Title="seedemail">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="seed_emailaddress" Title="seedemailaddress">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="globalcatalogusers" Title="globalcatalogusers">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="email_send_day" Title="emailsendday">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="email_reply_address" Title="emailreplyaddress">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="barcode_format" Title="barcodeformat">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="messaging_accountSID" Title="messagingaccount S I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="messaging_bannerplacements" Title="messagingbannerplacements">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="newsletters_enabled" Title="newslettersenabled">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="servicerecommendations_video_enabled" Title="servicerecommendationsvideoenabled">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="servicerecommendations_video_provider" Title="servicerecommendationsvideoprovider">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_apportion" Title="weeklybudgetapportion">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_limit" Title="weeklybudgetlimit">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_mail_6" Title="weeklybudgetmail6">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_mail_9" Title="weeklybudgetmail9">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_mail_14" Title="weeklybudgetmail14">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_email" Title="weeklybudgetemail">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_sms" Title="weeklybudgetsms">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="weekly_budget_priority" Title="weeklybudgetpriority">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="remindersSettingsAdmin">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, remindersSettingsAdmin)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

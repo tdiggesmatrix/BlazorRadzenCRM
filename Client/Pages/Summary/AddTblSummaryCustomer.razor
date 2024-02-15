@@ -1,0 +1,127 @@
+@page "/add-tbl-summary-customer"
+@attribute [Authorize]
+
+<PageTitle>Add TblSummaryCustomer</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblSummaryCustomer</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCustomer" Data="@tblSummaryCustomer" Visible="@(tblSummaryCustomer != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Store Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldStoreRecordID" Name="fldStoreRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldStoreRecordID" Text="fldStoreRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldDate" Name="fldDate" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDate" Text="fldDate is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Address Good" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumAddressGood" Name="fldNumAddressGood" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Address New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumAddressNew" Name="fldNumAddressNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Address Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumAddressBlank" Name="fldNumAddressBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Address Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumAddressBad" Name="fldNumAddressBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Address Corrected" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumAddressCorrected" Name="fldNumAddressCorrected" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Good" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumEmailGood" Name="fldNumEmailGood" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumEmailNew" Name="fldNumEmailNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumEmailBlank" Name="fldNumEmailBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumEmailBad" Name="fldNumEmailBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Mobile Good" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumMobileGood" Name="fldNumMobileGood" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Mobile New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumMobileNew" Name="fldNumMobileNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Mobile Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumMobileBlank" Name="fldNumMobileBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Mobile Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumMobileBad" Name="fldNumMobileBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Customer New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumCustomerNew" Name="fldNumCustomerNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Customer Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldNumCustomerRepeat" Name="fldNumCustomerRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCustomer.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

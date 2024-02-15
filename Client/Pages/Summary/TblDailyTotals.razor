@@ -1,0 +1,302 @@
+@page "/tbl-daily-totals"
+@attribute [Authorize]
+
+<PageTitle>TblDailyTotals</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="TblDailyTotals" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@tblDailyTotals" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCustomerRecordID" Title="fld Customer Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCustomerStoresRecordID" Title="fld Customer Stores Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldDate" Title="fld Date">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalSales" Title="fld Total Sales">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldServiceParts" Title="fld Service Parts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldServiceLabor" Title="fld Service Labor">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNonServiceParts" Title="fld Non Service Parts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNonServiceLabor" Title="fld Non Service Labor">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldDiscounts" Title="fld Discounts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumDiscounts" Title="fld Num Discounts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCoupons" Title="fld Coupons">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumCoupons" Title="fld Num Coupons">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldRefundsBeforeTax" Title="fld Refunds Before Tax">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldRefundsAfterTax" Title="fld Refunds After Tax">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumRefunds" Title="fld Num Refunds">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNetSales" Title="fld Net Sales">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTaxableTotal" Title="fld Taxable Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNonTaxableTotal" Title="fld Non Taxable Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTaxExemptTotal" Title="fld Tax Exempt Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGiftCardTotal" Title="fld Gift Card Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumGiftCardTotal" Title="fld Num Gift Card Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPercentGiftCardTotal" Title="fld Percent Gift Card Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAvgGiftCardTotal" Title="fld Avg Gift Card Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTax" Title="fld Sales Tax">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxCollected" Title="fld Sales Tax Collected">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxCollected1" Title="fld Sales Tax Collected1">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxCollected2" Title="fld Sales Tax Collected2">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxRefunded" Title="fld Sales Tax Refunded">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxRefunded1" Title="fld Sales Tax Refunded1">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxRefunded2" Title="fld Sales Tax Refunded2">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxExempt" Title="fld Sales Tax Exempt">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxExempt1" Title="fld Sales Tax Exempt1">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesTaxExempt2" Title="fld Sales Tax Exempt2">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumSalesTaxExempt" Title="fld Num Sales Tax Exempt">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldFleetPayments" Title="fld Fleet Payments">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumFleetPayments" Title="fld Num Fleet Payments">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPaidIn" Title="fld Paid In">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumPaidIn" Title="fld Num Paid In">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPaidOut" Title="fld Paid Out">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumPaidOut" Title="fld Num Paid Out">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalReceipts" Title="fld Total Receipts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldFleetSales" Title="fld Fleet Sales">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumFleetSales" Title="fld Num Fleet Sales">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldDayEndAddOns" Title="fld Day End Add Ons">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalBalance" Title="fld Total Balance">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCashOverShort" Title="fld Cash Over Short">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldChangeFund" Title="fld Change Fund">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldLeftInDrawer" Title="fld Left In Drawer">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBankDeposit" Title="fld Bank Deposit">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldLaborSalesTotal" Title="fld Labor Sales Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldLaborHours" Title="fld Labor Hours">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldLaborHoursPerVehicle" Title="fld Labor Hours Per Vehicle">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldLaborSalesPerHour" Title="fld Labor Sales Per Hour">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInvoiceSubTotal" Title="fld Invoice Sub Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInvoiceTotal" Title="fld Invoice Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumInvoice" Title="fld Num Invoice">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCostInvoiceTotal" Title="fld Cost Invoice Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldProfitInvoiceTotal" Title="fld Profit Invoice Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAvgInvoiceTotal" Title="fld Avg Invoice Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldVehicleAvgAge" Title="fld Vehicle Avg Age">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldVehicleAvgMileage" Title="fld Vehicle Avg Mileage">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInvoiceStart" Title="fld Invoice Start">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInvoiceEnd" Title="fld Invoice End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAvgInvoiceWait" Title="fld Avg Invoice Wait">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldQuickSaleTotal" Title="fld Quick Sale Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumQuickSale" Title="fld Num Quick Sale">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCostQuickSaleTotal" Title="fld Cost Quick Sale Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldProfitQuickSaleTotal" Title="fld Profit Quick Sale Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAvgQuickSaleTotal" Title="fld Avg Quick Sale Total">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAvgTotalNetSale" Title="fld Avg Total Net Sale">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalRepeat" Title="fld Total Repeat">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInventoryEnd" Title="fld Inventory End">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInventoryRestocked" Title="fld Inventory Restocked">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInventoryOrdered" Title="fld Inventory Ordered">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInventoryOutPurch" Title="fld Inventory Out Purch">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesWithoutTax" Title="fld Sales Without Tax">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCostOfSales" Title="fld Cost Of Sales">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGrossProfit" Title="fld Gross Profit">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldEstimatedLabor" Title="fld Estimated Labor">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldEstimatedProfit" Title="fld Estimated Profit">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAROpen" Title="fld A R Open">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldARDebit" Title="fld A R Debit">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldARInterest" Title="fld A R Interest">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldARPaymentDiscouts" Title="fld A R Payment Discouts">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldARCredits" Title="fld A R Credits">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldClerkTotalBalance" Title="fld Clerk Total Balance">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalRepeatPercent" Title="fld Total Repeat Percent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldTotalFirstTime" Title="fld Total First Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldInventoryAdjusted" Title="fld Inventory Adjusted">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumVoids" Title="fld Num Voids">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumBayDelete" Title="fld Num Bay Delete">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldOverHead" Title="fld Over Head">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount5" Title="fld Sales Amount5">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount5" Title="fld Sales Count5">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount10" Title="fld Sales Amount10">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount10" Title="fld Sales Count10">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount15" Title="fld Sales Amount15">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount15" Title="fld Sales Count15">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount20" Title="fld Sales Amount20">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount20" Title="fld Sales Count20">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount30" Title="fld Sales Amount30">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount30" Title="fld Sales Count30">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesAmount40" Title="fld Sales Amount40">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSalesCount40" Title="fld Sales Count40">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldAmtVoids" Title="fld Amt Voids">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPrevRefundInvCount" Title="fld Prev Refund Inv Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPrevRefundInvAmt" Title="fld Prev Refund Inv Amt">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPrevRefundQSCount" Title="fld Prev Refund Q S Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldPrevRefundQSAmt" Title="fld Prev Refund Q S Amt">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGCOnlyAmount" Title="fld G C Only Amount">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGCOnlyCount" Title="fld G C Only Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGCOnlyAmountQS" Title="fld G C Only Amount Q S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGCOnlyCountQS" Title="fld G C Only Count Q S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldGiftCardTotalQS" Title="fld Gift Card Total Q S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldNumGiftCardTotalQS" Title="fld Num Gift Card Total Q S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCashierCount" Title="fld Cashier Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldCashierTime" Title="fld Cashier Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay1Count" Title="fld Bay1 Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay1Time" Title="fld Bay1 Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay2Count" Title="fld Bay2 Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay2Time" Title="fld Bay2 Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay3Count" Title="fld Bay3 Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay3Time" Title="fld Bay3 Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay4Count" Title="fld Bay4 Count">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBay4Time" Title="fld Bay4 Time">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldBusinessGroupListIDPK" Title="fld Business Group List I D P K">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotal" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="tblDailyTotal">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, tblDailyTotal)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

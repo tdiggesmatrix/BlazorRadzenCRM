@@ -1,0 +1,78 @@
+@page "/edit-tbl-message-setting"
+@attribute [Authorize]
+
+<PageTitle>Edit TblMessageSetting</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblMessageSetting</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessageSetting" Data="@tblMessageSetting" Visible="@(tblMessageSetting != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Account Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldAccountName" Name="fldAccountName" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Test Account S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldTest_AccountSID" Name="fldTest_AccountSID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Test Auth Token" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldTest_AuthToken" Name="fldTest_AuthToken" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Live Account S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldLive_AccountSID" Name="fldLive_AccountSID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Live Auth Token" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldLive_AuthToken" Name="fldLive_AuthToken" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageSetting.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

@@ -1,0 +1,93 @@
+@page "/edit-tbl-cross-reference"
+@attribute [Authorize]
+
+<PageTitle>Edit TblCrossReference</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblCrossReference</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.TblCrossReference" Data="@tblCrossReference" Visible="@(tblCrossReference != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="Brand" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.Brand" Name="Brand" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Sub Brand" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.SubBrand" Name="SubBrand" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Store Num" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.StoreNum" Name="StoreNum" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Nickname" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.Nickname" Name="Nickname" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Address" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.Address" Name="Address" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="City Province" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.CityProvince" Name="CityProvince" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T D E S C2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.PRODUCT_DESC_2" Name="PRODUCT_DESC_2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Dealercode" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCrossReference.Dealercode" Name="Dealercode" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCrossReference.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCrossReference.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblCrossReference.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblCrossReference.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

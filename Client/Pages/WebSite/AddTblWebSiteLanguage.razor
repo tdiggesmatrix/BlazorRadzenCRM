@@ -1,0 +1,61 @@
+@page "/add-tbl-web-site-language"
+@attribute [Authorize]
+
+<PageTitle>Add TblWebSiteLanguage</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblWebSiteLanguage</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteLanguage" Data="@tblWebSiteLanguage" Visible="@(tblWebSiteLanguage != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Language" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldLanguage" Name="fldLanguage" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Language In Language" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldLanguageInLanguage" Name="fldLanguageInLanguage" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Location Type" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldLocationType" Name="fldLocationType" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Language I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldLanguageID" Name="fldLanguageID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Language Tag" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldLanguageTag" Name="fldLanguageTag" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblWebSiteLanguage.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

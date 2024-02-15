@@ -1,0 +1,122 @@
+@page "/tbl-summary-campaigns"
+@attribute [Authorize]
+
+<PageTitle>TblSummaryCampaigns</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="TblSummaryCampaigns" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@tblSummaryCampaigns" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldStoreRecordID" Title="fld Store Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldDate" Title="fld Date">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardToBeSent" Title="fld Num Card To Be Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardNotNeeded" Title="fld Num Card Not Needed">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardAddressCorrected" Title="fld Num Card Address Corrected">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardAddressBad" Title="fld Num Card Address Bad">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardAddressBlank" Title="fld Num Card Address Blank">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumCardSent" Title="fld Num Card Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldCostCardSent" Title="fld Cost Card Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSalesCardSent" Title="fld Sales Card Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailToBeSent" Title="fld Num Email To Be Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailNotNeeded" Title="fld Num Email Not Needed">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailAddressVerified" Title="fld Num Email Address Verified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailAddressBad" Title="fld Num Email Address Bad">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailAddressBlank" Title="fld Num Email Address Blank">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumEmailSent" Title="fld Num Email Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldCostEmailSent" Title="fld Cost Email Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSalesEmailSent" Title="fld Sales Email Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSToBeSent" Title="fld Num S M S To Be Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSNotNeeded" Title="fld Num S M S Not Needed">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSAddressVerified" Title="fld Num S M S Address Verified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSAddressBad" Title="fld Num S M S Address Bad">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSAddressBlank" Title="fld Num S M S Address Blank">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSSent" Title="fld Num S M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumSMSSegmentsSent" Title="fld Num S M S Segments Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldCostSMSSent" Title="fld Cost S M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSalesSMSSent" Title="fld Sales S M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSToBeSent" Title="fld Num M M S To Be Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSNotNeeded" Title="fld Num M M S Not Needed">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSAddressVerified" Title="fld Num M M S Address Verified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSAddressBad" Title="fld Num M M S Address Bad">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSAddressBlank" Title="fld Num M M S Address Blank">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSSent" Title="fld Num M M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldNumMMSSegmentsSent" Title="fld Num M M S Segments Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldCostMMSSent" Title="fld Cost M M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSalesMMSSent" Title="fld Sales M M S Sent">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="tblSummaryCampaign">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, tblSummaryCampaign)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

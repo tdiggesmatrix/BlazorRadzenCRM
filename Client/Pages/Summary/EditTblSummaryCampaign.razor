@@ -1,0 +1,239 @@
+@page "/edit-tbl-summary-campaign"
+@attribute [Authorize]
+
+<PageTitle>Edit TblSummaryCampaign</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblSummaryCampaign</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummaryCampaign" Data="@tblSummaryCampaign" Visible="@(tblSummaryCampaign != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Store Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldStoreRecordID" Name="fldStoreRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldStoreRecordID" Text="fldStoreRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldDate" Name="fldDate" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDate" Text="fldDate is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card To Be Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardToBeSent" Name="fldNumCardToBeSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card Not Needed" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardNotNeeded" Name="fldNumCardNotNeeded" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card Address Corrected" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardAddressCorrected" Name="fldNumCardAddressCorrected" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card Address Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardAddressBad" Name="fldNumCardAddressBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card Address Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardAddressBlank" Name="fldNumCardAddressBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Card Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumCardSent" Name="fldNumCardSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Cost Card Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldCostCardSent" Name="fldCostCardSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sales Card Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSalesCardSent" Name="fldSalesCardSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email To Be Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailToBeSent" Name="fldNumEmailToBeSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Not Needed" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailNotNeeded" Name="fldNumEmailNotNeeded" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Address Verified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailAddressVerified" Name="fldNumEmailAddressVerified" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Address Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailAddressBad" Name="fldNumEmailAddressBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Address Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailAddressBlank" Name="fldNumEmailAddressBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num Email Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumEmailSent" Name="fldNumEmailSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Cost Email Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldCostEmailSent" Name="fldCostEmailSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sales Email Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSalesEmailSent" Name="fldSalesEmailSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S To Be Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSToBeSent" Name="fldNumSMSToBeSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Not Needed" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSNotNeeded" Name="fldNumSMSNotNeeded" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Address Verified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSAddressVerified" Name="fldNumSMSAddressVerified" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Address Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSAddressBad" Name="fldNumSMSAddressBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Address Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSAddressBlank" Name="fldNumSMSAddressBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSSent" Name="fldNumSMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num S M S Segments Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumSMSSegmentsSent" Name="fldNumSMSSegmentsSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Cost S M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldCostSMSSent" Name="fldCostSMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sales S M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSalesSMSSent" Name="fldSalesSMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S To Be Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSToBeSent" Name="fldNumMMSToBeSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Not Needed" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSNotNeeded" Name="fldNumMMSNotNeeded" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Address Verified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSAddressVerified" Name="fldNumMMSAddressVerified" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Address Bad" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSAddressBad" Name="fldNumMMSAddressBad" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Address Blank" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSAddressBlank" Name="fldNumMMSAddressBlank" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSSent" Name="fldNumMMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Num M M S Segments Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldNumMMSSegmentsSent" Name="fldNumMMSSegmentsSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Cost M M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldCostMMSSent" Name="fldCostMMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sales M M S Sent" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSalesMMSSent" Name="fldSalesMMSSent" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummaryCampaign.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

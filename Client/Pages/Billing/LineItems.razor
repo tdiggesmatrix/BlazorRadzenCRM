@@ -1,0 +1,144 @@
+@page "/line-items"
+@attribute [Authorize]
+
+<PageTitle>LineItems</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="LineItems" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@lineItems" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="ITEM_CODE" Title="I T E M C O D E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="TRACKING" Title="T R A C K I N G">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="PRODUCT" Title="P R O D U C T">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="PRODUCT_DESC_1" Title="P R O D U C T D E S C1">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="PRODUCT_DESC_2" Title="P R O D U C T D E S C2">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="PRODUCT_CATEGORY" Title="P R O D U C T C A T E G O R Y">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SPEC_REF" Title="S P E C R E F">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="REMARKS" Title="R E M A R K S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="VENDOR" Title="V E N D O R">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="VEND_Q_NUM" Title="V E N D Q N U M">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="VEND_J_NUM" Title="V E N D J N U M">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="AP_SEQ" Title="A P S E Q">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SELL_QUANTITY_ORDERED" Title="S E L L Q U A N T I T Y O R D E R E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SELL_QUANTITY_SHIPPED" Title="S E L L Q U A N T I T Y S H I P P E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SELL_UNIT_OF_MEASURE" Title="S E L L U N I T O F M E A S U R E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="BUY_QUANTITY_ORDERED" Title="B U Y Q U A N T I T Y O R D E R E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="BUY_QUANTITY_SHIPPED" Title="B U Y Q U A N T I T Y S H I P P E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="BUY_UNIT_OF_MEASURE" Title="B U Y U N I T O F M E A S U R E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_ORDERED" Title="D A T E O R D E R E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_DUE" Title="D A T E D U E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_FOLLOW_UP" Title="D A T E F O L L O W U P">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="COST_CENTER" Title="C O S T C E N T E R">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="PRICE" Title="P R I C E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="COST" Title="C O S T">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SWITCHES" Title="S W I T C H E S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="TAX_EXEMPT" Title="T A X E X E M P T">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SWITCHES2" Title="S W I T C H E S2">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="ALT_GL_SALE" Title="A L T G L S A L E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="JOB_NUMBER" Title="J O B N U M B E R">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_SHIPPED" Title="D A T E S H I P P E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_REORDER" Title="D A T E R E O R D E R">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="ALT_SALES_TAX" Title="A L T S A L E S T A X">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="EXT_TAXABLE_AMOUNT" Title="E X T T A X A B L E A M O U N T">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="GL_DIV" Title="G L D I V">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="MANUFACTURE_ID" Title="M A N U F A C T U R E I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="RESTRICT_RECORD" Title="R E S T R I C T R E C O R D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="QUANTITY_RECEIVED" Title="Q U A N T I T Y R E C E I V E D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="IMAGE_ID" Title="I M A G E I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="LONGDESC_ID" Title="L O N G D E S C I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="VENDORINS_ID" Title="V E N D O R I N S I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="WAREHOUSEINS_ID" Title="W A R E H O U S E I N S I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="MASTER_ITEM_CODE" Title="M A S T E R I T E M C O D E">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="ITEM_ORDER" Title="I T E M O R D E R">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="DATE_SHIP_BY" Title="D A T E S H I P B Y">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="CUSTOM_SWITCHES" Title="C U S T O M S W I T C H E S">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="IMPRINT_TEMPLATE_ID" Title="I M P R I N T T E M P L A T E I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="SHIP_TO_CONTACT_ID" Title="S H I P T O C O N T A C T I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="lineItem">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, lineItem)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

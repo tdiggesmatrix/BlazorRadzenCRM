@@ -1,0 +1,77 @@
+@page "/add-tbl-daily-totals-operator"
+@attribute [Authorize]
+
+<PageTitle>Add TblDailyTotalsOperator</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblDailyTotalsOperator</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblDailyTotalsOperator" Data="@tblDailyTotalsOperator" Visible="@(tblDailyTotalsOperator != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Customer Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldCustomerRecordID" Name="fldCustomerRecordID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Customer Stores Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldCustomerStoresRecordID" Name="fldCustomerStoresRecordID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldDate" Name="fldDate" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDate" Text="fldDate is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Operator Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldOperatorRecordID" Name="fldOperatorRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldOperatorRecordID" Text="fldOperatorRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Numberof Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldNumberofSales" Name="fldNumberofSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Dollarof Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldDollarofSales" Name="fldDollarofSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Dollar Refundof Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldDollarRefundofSales" Name="fldDollarRefundofSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDailyTotalsOperator.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

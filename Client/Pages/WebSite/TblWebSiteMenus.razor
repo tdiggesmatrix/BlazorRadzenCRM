@@ -1,0 +1,74 @@
+@page "/tbl-web-site-menus"
+@attribute [Authorize]
+
+<PageTitle>TblWebSiteMenus</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="TblWebSiteMenus" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@tblWebSiteMenus" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldParentID" Title="fld Parent I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldEnabled" Title="fld Enabled">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSection" Title="fld Section">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldMenuName" Title="fld Menu Name">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldLanguage_RecordID" Title="fld Language Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldMenuCaption" Title="fld Menu Caption">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldMenuIconName" Title="fld Menu Icon Name">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldAction" Title="fld Action">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldActivity" Title="fld Activity">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldOrder" Title="fld Order">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldVisible" Title="fld Visible">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSecurityKey" Title="fld Security Key">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteMenu" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="tblWebSiteMenu">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, tblWebSiteMenu)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

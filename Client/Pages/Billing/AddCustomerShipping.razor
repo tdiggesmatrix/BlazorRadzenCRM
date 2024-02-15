@@ -1,0 +1,224 @@
+@page "/add-customer-shipping"
+@attribute [Authorize]
+
+<PageTitle>Add CustomerShipping</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save CustomerShipping</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.CustomerShipping" Data="@customerShipping" Visible="@(customerShipping != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="C U S T O M E R C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.CUSTOMER_CODE" Name="CUSTOMER_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O M P A N Y N A M E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.COMPANY_NAME" Name="COMPANY_NAME" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A D D R E S S L I N E1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.ADDRESS_LINE_1" Name="ADDRESS_LINE_1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A D D R E S S L I N E2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.ADDRESS_LINE_2" Name="ADDRESS_LINE_2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C I T Y" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.CITY" Name="CITY" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S T A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.STATE" Name="STATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Z I P C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.ZIP_CODE" Name="ZIP_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P H O N E N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.PHONE_NUMBER" Name="PHONE_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F A X N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.FAX_NUMBER" Name="FAX_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="E M A I L A D D R E S S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.EMAIL_ADDRESS" Name="EMAIL_ADDRESS" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B I L L R E F E R E N C E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.BILL_REFERENCE" Name="BILL_REFERENCE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="M A S T E R C U S T O M E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.MASTER_CUSTOMER" Name="MASTER_CUSTOMER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O S T C E N T E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.COST_CENTER" Name="COST_CENTER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O N T A C T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.CONTACT" Name="CONTACT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S A L U T A T I O N" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.SALUTATION" Name="SALUTATION" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S A L E S R E P" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.SALES_REP" Name="SALES_REP" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="T A X L O C A T I O N" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.TAX_LOCATION" Name="TAX_LOCATION" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C A T E G O R Y" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.CATEGORY" Name="CATEGORY" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="N O T E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.NOTES" Name="NOTES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S W I T C H E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.SWITCHES" Name="SWITCHES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="I N A C T I V E" Component="INACTIVE" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@customerShipping.INACTIVE" Name="INACTIVE" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenFormField Text="O P E R A T O R C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.OPERATOR_CODE" Name="OPERATOR_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="H T M L C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.HTML_CODE" Name="HTML_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D U N S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.DUNS" Name="DUNS" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S H A R E D S E C R E T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.SHARED_SECRET" Name="SHARED_SECRET" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B A S E64 O R D E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.BASE64_ORDER" Name="BASE64_ORDER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="E C O M M E R C E E N A B L E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.ECOMMERCE_ENABLED" Name="ECOMMERCE_ENABLED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="L A S T I N V D A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@customerShipping.LAST_INV_DATE" Name="LAST_INV_DATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C U S T O M E R I T E M N U M B E R D I S C O U N T S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.CUSTOMER_ITEM_NUMBER_DISCOUNTS" Name="CUSTOMER_ITEM_NUMBER_DISCOUNTS" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="E D I C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.EDI_CODE" Name="EDI_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F E D E X A C C O U N T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.FEDEX_ACCOUNT" Name="FEDEX_ACCOUNT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F E D E X M E T E R N U M" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.FEDEX_METER_NUM" Name="FEDEX_METER_NUM" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F E D E X K E Y" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.FEDEX_KEY" Name="FEDEX_KEY" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F E D E X P A S S W O R D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.FEDEX_PASSWORD" Name="FEDEX_PASSWORD" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F E D E X R A T E T Y P E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.FEDEX_RATE_TYPE" Name="FEDEX_RATE_TYPE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D E F A U L T C O N T A C T I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.DEFAULT_CONTACT_ID" Name="DEFAULT_CONTACT_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="R E B A T E C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@customerShipping.REBATE_CODE" Name="REBATE_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@customerShipping.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@customerShipping.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@customerShipping.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

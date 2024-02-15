@@ -1,0 +1,188 @@
+@page "/edit-reminders-settings-admin"
+@attribute [Authorize]
+
+<PageTitle>Edit RemindersSettingsAdmin</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save RemindersSettingsAdmin</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.RemindersSettingsAdmin" Data="@remindersSettingsAdmin" Visible="@(remindersSettingsAdmin != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="dealercode" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.dealercode" Name="dealercode" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="processweeks" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.processweeks" Name="processweeks" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedmail" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_mail" Name="seed_mail" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedname" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_name" Name="seed_name" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedaddress" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_address" Name="seed_address" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedcity" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_city" Name="seed_city" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedstate" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_state" Name="seed_state" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedzip" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_zip" Name="seed_zip" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedemail" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_email" Name="seed_email" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="seedemailaddress" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.seed_emailaddress" Name="seed_emailaddress" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="globalcatalogusers" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.globalcatalogusers" Name="globalcatalogusers" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="emailsendday" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.email_send_day" Name="email_send_day" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="emailreplyaddress" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.email_reply_address" Name="email_reply_address" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="barcodeformat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.barcode_format" Name="barcode_format" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="messagingaccount S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.messaging_accountSID" Name="messaging_accountSID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="messagingbannerplacements" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.messaging_bannerplacements" Name="messaging_bannerplacements" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="newslettersenabled" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.newsletters_enabled" Name="newsletters_enabled" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="servicerecommendationsvideoenabled" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.servicerecommendations_video_enabled" Name="servicerecommendations_video_enabled" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="servicerecommendationsvideoprovider" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.servicerecommendations_video_provider" Name="servicerecommendations_video_provider" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetapportion" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_apportion" Name="weekly_budget_apportion" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetlimit" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_limit" Name="weekly_budget_limit" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetmail6" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_mail_6" Name="weekly_budget_mail_6" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetmail9" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_mail_9" Name="weekly_budget_mail_9" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetmail14" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_mail_14" Name="weekly_budget_mail_14" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetemail" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_email" Name="weekly_budget_email" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetsms" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_sms" Name="weekly_budget_sms" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="weeklybudgetpriority" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.weekly_budget_priority" Name="weekly_budget_priority" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@remindersSettingsAdmin.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

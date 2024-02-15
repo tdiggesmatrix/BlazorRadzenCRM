@@ -1,0 +1,127 @@
+@inherits LayoutComponentBase
+<RadzenComponents />
+
+<RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
+    <RadzenHeader>
+        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenColumn Size="5">
+                <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+            </RadzenColumn>
+            <RadzenColumn Size="7">
+                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End">
+                    <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick">
+                        <ChildContent>
+
+                            <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" />
+                            <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users" />
+                            <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" />
+                            <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new" />
+                        </ChildContent>
+                        <Template>
+                            @Security.User?.Name
+                            <RadzenGravatar Email="@Security.User?.Name" />
+                        </Template>
+                    </RadzenProfileMenu>
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenHeader>
+    <RadzenBody Expanded="@sidebarExpanded">
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+            @Body
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+    <RadzenSidebar Expanded="@sidebarExpanded" style="z-index: 2">
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
+            <RadzenImage Path="images/logo.png"  style="width: 48px; height: 48px;"></RadzenImage>
+            <RadzenText Text="ThrottleCoreCRM" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color);" />
+        </RadzenStack>
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Path="" />
+            <RadzenPanelMenuItem Text="Contacts" Path="contacts" />
+            <RadzenPanelMenuItem Text="Departments" Path="departments" />
+            <RadzenPanelMenuItem Text="Employees" Path="employees" />
+            <RadzenPanelMenuItem Text="Opportunities" Path="opportunities" />
+            <RadzenPanelMenuItem Text="OpportunityStatuses" Path="opportunity-statuses" />
+            <RadzenPanelMenuItem Text="Tasks" Path="tasks" />
+            <RadzenPanelMenuItem Text="TaskStatuses" Path="task-statuses" />
+            <RadzenPanelMenuItem Text="TaskTypes" Path="task-types" />
+            <RadzenPanelMenuItem Text="TblDatabases" Path="tbl-databases" />
+            <RadzenPanelMenuItem Text="TblWebSiteErrorDescriptions" Path="tbl-web-site-error-descriptions" />
+            <RadzenPanelMenuItem Text="TblWebSiteLanguages" Path="tbl-web-site-languages" />
+            <RadzenPanelMenuItem Text="TblWebSiteMenus" Path="tbl-web-site-menus" />
+            <RadzenPanelMenuItem Text="TblWebSiteSecurityGroups" Path="tbl-web-site-security-groups" />
+            <RadzenPanelMenuItem Text="TblWebSiteSecuritySettings" Path="tbl-web-site-security-settings" />
+            <RadzenPanelMenuItem Text="TblWebSiteUsers" Path="tbl-web-site-users" />
+            <RadzenPanelMenuItem Text="TblDailyTotals" Path="tbl-daily-totals" />
+            <RadzenPanelMenuItem Text="TblDailyTotalsLabors" Path="tbl-daily-totals-labors" />
+            <RadzenPanelMenuItem Text="TblDailyTotalsOperators" Path="tbl-daily-totals-operators" />
+            <RadzenPanelMenuItem Text="TblDailyTotalsParts" Path="tbl-daily-totals-parts" />
+            <RadzenPanelMenuItem Text="TblHelperCoupons" Path="tbl-helper-coupons" />
+            <RadzenPanelMenuItem Text="TblHelperEmailStatusCodes" Path="tbl-helper-email-status-codes" />
+            <RadzenPanelMenuItem Text="TblHelperLabors" Path="tbl-helper-labors" />
+            <RadzenPanelMenuItem Text="TblHelperMailAddressErrors" Path="tbl-helper-mail-address-errors" />
+            <RadzenPanelMenuItem Text="TblHelperParts" Path="tbl-helper-parts" />
+            <RadzenPanelMenuItem Text="TblSummaryCampaigns" Path="tbl-summary-campaigns" />
+            <RadzenPanelMenuItem Text="TblSummaryCustomers" Path="tbl-summary-customers" />
+            <RadzenPanelMenuItem Text="TblSummarySales" Path="tbl-summary-sales" />
+            <RadzenPanelMenuItem Text="TblSummaryVehicles" Path="tbl-summary-vehicles" />
+            <RadzenPanelMenuItem Text="TblCustomers" Path="tbl-customers" />
+            <RadzenPanelMenuItem Text="TblCustomerBrands" Path="tbl-customer-brands" />
+            <RadzenPanelMenuItem Text="TblCustomerBrandsStoresJoins" Path="tbl-customer-brands-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerContacts" Path="tbl-customer-contacts" />
+            <RadzenPanelMenuItem Text="TblCustomerContactsStoresJoins" Path="tbl-customer-contacts-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerFranchises" Path="tbl-customer-franchises" />
+            <RadzenPanelMenuItem Text="TblCustomerFranchisesStoresJoins" Path="tbl-customer-franchises-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerGroups" Path="tbl-customer-groups" />
+            <RadzenPanelMenuItem Text="TblCustomerGroupsStoresJoins" Path="tbl-customer-groups-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerIndustries" Path="tbl-customer-industries" />
+            <RadzenPanelMenuItem Text="TblCustomerIndustryStoresJoins" Path="tbl-customer-industry-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerProductandServices" Path="tbl-customer-productand-services" />
+            <RadzenPanelMenuItem Text="TblCustomerProductandServicesStoresJoins" Path="tbl-customer-productand-services-stores-joins" />
+            <RadzenPanelMenuItem Text="TblCustomerStores" Path="tbl-customer-stores" />
+            <RadzenPanelMenuItem Text="TblDataDmSFileActivities" Path="tbl-data-dm-s-file-activities" />
+            <RadzenPanelMenuItem Text="TblDataDmSFileArchiveActivities" Path="tbl-data-dm-s-file-archive-activities" />
+            <RadzenPanelMenuItem Text="TblDataDmSFileArchiveServers" Path="tbl-data-dm-s-file-archive-servers" />
+            <RadzenPanelMenuItem Text="TblDataDmSFtPActivities" Path="tbl-data-dm-s-ft-p-activities" />
+            <RadzenPanelMenuItem Text="TblDataDmSProviders" Path="tbl-data-dm-s-providers" />
+            <RadzenPanelMenuItem Text="TblDataHelperAcknowledgementTypes" Path="tbl-data-helper-acknowledgement-types" />
+            <RadzenPanelMenuItem Text="TblDataHelperFileTypes" Path="tbl-data-helper-file-types" />
+            <RadzenPanelMenuItem Text="TblDataHelperIntegrations" Path="tbl-data-helper-integrations" />
+            <RadzenPanelMenuItem Text="TblDataHelperPosTypes" Path="tbl-data-helper-pos-types" />
+            <RadzenPanelMenuItem Text="TblDataHelperProducts" Path="tbl-data-helper-products" />
+            <RadzenPanelMenuItem Text="TblDataImportStores" Path="tbl-data-import-stores" />
+            <RadzenPanelMenuItem Text="TblDataImportVerifications" Path="tbl-data-import-verifications" />
+            <RadzenPanelMenuItem Text="TblMessageActivities" Path="tbl-message-activities" />
+            <RadzenPanelMenuItem Text="TblMessageCommDates" Path="tbl-message-comm-dates" />
+            <RadzenPanelMenuItem Text="TblMessageDirections" Path="tbl-message-directions" />
+            <RadzenPanelMenuItem Text="TblMessageErrorCodes" Path="tbl-message-error-codes" />
+            <RadzenPanelMenuItem Text="TblMessageGroupingTerms" Path="tbl-message-grouping-terms" />
+            <RadzenPanelMenuItem Text="TblMessageGroupingTypes" Path="tbl-message-grouping-types" />
+            <RadzenPanelMenuItem Text="TblMessageMissedCalls" Path="tbl-message-missed-calls" />
+            <RadzenPanelMenuItem Text="TblMessageNotifications" Path="tbl-message-notifications" />
+            <RadzenPanelMenuItem Text="TblMessagePhoneNumbers" Path="tbl-message-phone-numbers" />
+            <RadzenPanelMenuItem Text="TblMessageSettings" Path="tbl-message-settings" />
+            <RadzenPanelMenuItem Text="TblMessageUsages" Path="tbl-message-usages" />
+            <RadzenPanelMenuItem Text="Userdetails" Path="userdetails" />
+            <RadzenPanelMenuItem Text="BulkBillings" Path="bulk-billings" />
+            <RadzenPanelMenuItem Text="CurrentStores" Path="current-stores" />
+            <RadzenPanelMenuItem Text="CustomerBillings" Path="customer-billings" />
+            <RadzenPanelMenuItem Text="CustomerShippings" Path="customer-shippings" />
+            <RadzenPanelMenuItem Text="Jobs" Path="jobs" />
+            <RadzenPanelMenuItem Text="LineItems" Path="line-items" />
+            <RadzenPanelMenuItem Text="Products" Path="products" />
+            <RadzenPanelMenuItem Text="ProductCategories" Path="product-categories" />
+            <RadzenPanelMenuItem Text="RemindersSettingsAdmins" Path="reminders-settings-admins" />
+            <RadzenPanelMenuItem Text="SettingsConfigurations" Path="settings-configurations" />
+            <RadzenPanelMenuItem Text="SettingsContacts" Path="settings-contacts" />
+            <RadzenPanelMenuItem Text="TblCrossReferences" Path="tbl-cross-references" />
+        </RadzenPanelMenu>
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+            <RadzenText Text="ThrottleCoreCRM v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+            <RadzenText Text="Copyright Ⓒ 2024" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+        </RadzenStack>
+    </RadzenSidebar>
+</RadzenLayout>

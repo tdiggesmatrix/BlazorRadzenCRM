@@ -1,0 +1,113 @@
+@page "/add-tbl-data-dm-s-file-activity"
+@attribute [Authorize]
+
+<PageTitle>Add TblDataDmSFileActivity</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblDataDmSFileActivity</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblDataDmSFileActivity" Data="@tblDataDmSFileActivity" Visible="@(tblDataDmSFileActivity != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldRecordID" Name="fldRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldRecordID" Text="fldRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Provider Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Provider_RecordID" Name="fldDMS_Provider_RecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDMS_Provider_RecordID" Text="fldDMS_Provider_RecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Filename" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Source_Filename" Name="fldDMS_Source_Filename" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDMS_Source_Filename" Text="fldDMS_Source_Filename is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Directory" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Source_Directory" Name="fldDMS_Source_Directory" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDMS_Source_Directory" Text="fldDMS_Source_Directory is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Size" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Source_Size" Name="fldDMS_Source_Size" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Created Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Source_Created_DateTime" Name="fldDMS_Source_Created_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Processed Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Source_Processed_DateTime" Name="fldDMS_Source_Processed_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Target Filename" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Target_Filename" Name="fldDMS_Target_Filename" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Target Directory" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Target_Directory" Name="fldDMS_Target_Directory" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Target Moved Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Target_Moved_DateTime" Name="fldDMS_Target_Moved_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Archive I D P K" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_ArchiveIDPK" Name="fldDMS_ArchiveIDPK" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Archive Added Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldDMS_Archive_Added_DateTime" Name="fldDMS_Archive_Added_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Last Modified Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldLastModifiedDate" Name="fldLastModifiedDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFileActivity.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

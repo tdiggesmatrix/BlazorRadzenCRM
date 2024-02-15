@@ -1,0 +1,150 @@
+@page "/edit-tbl-data-dm-s-provider"
+@attribute [Authorize]
+
+<PageTitle>Edit TblDataDmSProvider</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblDataDmSProvider</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblDataDmSProvider" Data="@tblDataDmSProvider" Visible="@(tblDataDmSProvider != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldRecordID" Name="fldRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldRecordID" Text="fldRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Company Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldDMS_Company_Name" Name="fldDMS_Company_Name" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Provider Code" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldDMS_Provider_Code" Name="fldDMS_Provider_Code" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Contact Email" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldDMS_Contact_Email" Name="fldDMS_Contact_Email" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Contact Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldDMS_Contact_Name" Name="fldDMS_Contact_Name" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Notes" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldDMS_Notes" Name="fldDMS_Notes" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Record Index" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldRecordIndex" Name="fldRecordIndex" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Integration Type" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldIntegration_Type" Name="fldIntegration_Type" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld F T P Folder Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldFTP_FolderName" Name="fldFTP_FolderName" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld F T P File Extensions" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldFTP_File_Extensions" Name="fldFTP_File_Extensions" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld F T P File Prefixes" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldFTP_File_Prefixes" Name="fldFTP_File_Prefixes" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld F T P Sample Filename" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldFTP_Sample_Filename" Name="fldFTP_Sample_Filename" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="fld F T P File Compressed" Component="fldFTP_File_Compressed" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@tblDataDmSProvider.fldFTP_File_Compressed" Name="fldFTP_File_Compressed" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="fld F T P Sub Folders" Component="fldFTP_SubFolders" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@tblDataDmSProvider.fldFTP_SubFolders" Name="fldFTP_SubFolders" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="fld F T P Multiple Files One Record" Component="fldFTP_MultipleFilesOneRecord" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@tblDataDmSProvider.fldFTP_MultipleFilesOneRecord" Name="fldFTP_MultipleFilesOneRecord" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenFormField Text="fld F T P Notes About Processing Files" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldFTP_NotesAboutProcessingFiles" Name="fldFTP_NotesAboutProcessingFiles" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Last Modified Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldLastModifiedDate" Name="fldLastModifiedDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSProvider.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

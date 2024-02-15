@@ -1,0 +1,118 @@
+@page "/tbl-message-phone-numbers"
+@attribute [Authorize]
+
+<PageTitle>TblMessagePhoneNumbers</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="TblMessagePhoneNumbers" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenSplitButton Icon="get_app" Text="Export" Click="@ExportClick" Variant="Variant.Flat" Shade="Shade.Lighter">
+                    <RadzenSplitButtonItem Text="Excel" Value="xlsx" />
+                    <RadzenSplitButtonItem Text="CSV" Value="csv" />
+                </RadzenSplitButton>
+                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddButtonClick" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" />
+    <RadzenRow>
+      <RadzenColumn SizeMD=12>
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+            Data="@tblMessagePhoneNumbers" LoadData="@Grid0LoadData" Count="@count" TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" RowDoubleClick="@EditRow">
+            <Columns>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldRecordID" Title="fld Record I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldAccountSid" Title="fld Account Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldApiVersion" Title="fld Api Version">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldBeta" Title="fld Beta">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldBundleSid" Title="fld Bundle Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldCapabilities" Title="fld Capabilities">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldDateCreated" Title="fld Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldDateUpdated" Title="fld Date Updated">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldddressRequirements" Title="fldddress Requirements">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldEmergencyAddressSid" Title="fld Emergency Address Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldEmergencyAddressStatus" Title="fld Emergency Address Status">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldEmergencyStatus" Title="fld Emergency Status">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldFriendlyName" Title="fld Friendly Name">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldIdentitySid" Title="fld Identity Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldOrigin" Title="fld Origin">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldPhoneNumber" Title="fld Phone Number">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSid" Title="fld Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSmsApplicationSid" Title="fld Sms Application Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSmsFallbackMethod" Title="fld Sms Fallback Method">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSmsFallbackUrl" Title="fld Sms Fallback Url">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSmsMethod" Title="fld Sms Method">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSmsUrl" Title="fld Sms Url">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldStatus" Title="fld Status">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldStatusCallback" Title="fld Status Callback">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldStatusCallbackMethod" Title="fld Status Callback Method">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldTrunkSid" Title="fld Trunk Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldUri" Title="fld Uri">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceApplicationSid" Title="fld Voice Application Sid">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceCallerIdLookup" Title="fld Voice Caller Id Lookup">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceFallbackMethod" Title="fld Voice Fallback Method">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceFallbackUrl" Title="fld Voice Fallback Url">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceMethod" Title="fld Voice Method">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceReceiveMode" Title="fld Voice Receive Mode">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldVoiceUrl" Title="fld Voice Url">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldStore" Title="fld Store">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSysUserID" Title="fld Sys User I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSysCompID" Title="fld Sys Comp I D">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSysDate_Created" Title="fld Sys Date Created">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Property="fldSysDate_LastModified" Title="fld Sys Date Last Modified">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+                    <Template Context="tblMessagePhoneNumber">
+
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Medium"
+                            Shade="Shade.Lighter" Variant="Variant.Flat"
+                            Click=@(args => GridDeleteButtonClick(args, tblMessagePhoneNumber)) @onclick:stopPropagation="true" />
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>
+
+    </RadzenColumn>
+  </RadzenRow>
+</RadzenStack>

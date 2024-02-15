@@ -1,0 +1,206 @@
+@page "/add-tbl-message-phone-number"
+@attribute [Authorize]
+
+<PageTitle>Add TblMessagePhoneNumber</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblMessagePhoneNumber</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessagePhoneNumber" Data="@tblMessagePhoneNumber" Visible="@(tblMessagePhoneNumber != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Account Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldAccountSid" Name="fldAccountSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Api Version" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldApiVersion" Name="fldApiVersion" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Beta" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldBeta" Name="fldBeta" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Bundle Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldBundleSid" Name="fldBundleSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Capabilities" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldCapabilities" Name="fldCapabilities" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldDateCreated" Name="fldDateCreated" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date Updated" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldDateUpdated" Name="fldDateUpdated" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldddress Requirements" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldddressRequirements" Name="fldddressRequirements" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Emergency Address Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldEmergencyAddressSid" Name="fldEmergencyAddressSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Emergency Address Status" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldEmergencyAddressStatus" Name="fldEmergencyAddressStatus" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Emergency Status" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldEmergencyStatus" Name="fldEmergencyStatus" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Friendly Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldFriendlyName" Name="fldFriendlyName" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Identity Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldIdentitySid" Name="fldIdentitySid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Origin" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldOrigin" Name="fldOrigin" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Phone Number" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldPhoneNumber" Name="fldPhoneNumber" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSid" Name="fldSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sms Application Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSmsApplicationSid" Name="fldSmsApplicationSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sms Fallback Method" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSmsFallbackMethod" Name="fldSmsFallbackMethod" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sms Fallback Url" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSmsFallbackUrl" Name="fldSmsFallbackUrl" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sms Method" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSmsMethod" Name="fldSmsMethod" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sms Url" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSmsUrl" Name="fldSmsUrl" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Status" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldStatus" Name="fldStatus" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Status Callback" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldStatusCallback" Name="fldStatusCallback" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Status Callback Method" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldStatusCallbackMethod" Name="fldStatusCallbackMethod" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Trunk Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldTrunkSid" Name="fldTrunkSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Uri" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldUri" Name="fldUri" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Application Sid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceApplicationSid" Name="fldVoiceApplicationSid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Caller Id Lookup" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceCallerIdLookup" Name="fldVoiceCallerIdLookup" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Fallback Method" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceFallbackMethod" Name="fldVoiceFallbackMethod" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Fallback Url" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceFallbackUrl" Name="fldVoiceFallbackUrl" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Method" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceMethod" Name="fldVoiceMethod" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Receive Mode" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceReceiveMode" Name="fldVoiceReceiveMode" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Voice Url" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldVoiceUrl" Name="fldVoiceUrl" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Store" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldStore" Name="fldStore" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessagePhoneNumber.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

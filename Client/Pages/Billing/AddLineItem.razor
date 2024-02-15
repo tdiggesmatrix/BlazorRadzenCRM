@@ -1,0 +1,271 @@
+@page "/add-line-item"
+@attribute [Authorize]
+
+<PageTitle>Add LineItem</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save LineItem</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.LineItem" Data="@lineItem" Visible="@(lineItem != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="I T E M C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.ITEM_CODE" Name="ITEM_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="T R A C K I N G" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.TRACKING" Name="TRACKING" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.PRODUCT" Name="PRODUCT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T D E S C1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.PRODUCT_DESC_1" Name="PRODUCT_DESC_1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T D E S C2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.PRODUCT_DESC_2" Name="PRODUCT_DESC_2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T C A T E G O R Y" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.PRODUCT_CATEGORY" Name="PRODUCT_CATEGORY" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S P E C R E F" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.SPEC_REF" Name="SPEC_REF" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="R E M A R K S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.REMARKS" Name="REMARKS" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="V E N D O R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.VENDOR" Name="VENDOR" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="V E N D Q N U M" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.VEND_Q_NUM" Name="VEND_Q_NUM" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="V E N D J N U M" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.VEND_J_NUM" Name="VEND_J_NUM" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A P S E Q" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.AP_SEQ" Name="AP_SEQ" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S E L L Q U A N T I T Y O R D E R E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.SELL_QUANTITY_ORDERED" Name="SELL_QUANTITY_ORDERED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S E L L Q U A N T I T Y S H I P P E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.SELL_QUANTITY_SHIPPED" Name="SELL_QUANTITY_SHIPPED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S E L L U N I T O F M E A S U R E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.SELL_UNIT_OF_MEASURE" Name="SELL_UNIT_OF_MEASURE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B U Y Q U A N T I T Y O R D E R E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.BUY_QUANTITY_ORDERED" Name="BUY_QUANTITY_ORDERED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B U Y Q U A N T I T Y S H I P P E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.BUY_QUANTITY_SHIPPED" Name="BUY_QUANTITY_SHIPPED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B U Y U N I T O F M E A S U R E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.BUY_UNIT_OF_MEASURE" Name="BUY_UNIT_OF_MEASURE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E O R D E R E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_ORDERED" Name="DATE_ORDERED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E D U E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_DUE" Name="DATE_DUE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E F O L L O W U P" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_FOLLOW_UP" Name="DATE_FOLLOW_UP" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O S T C E N T E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.COST_CENTER" Name="COST_CENTER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R I C E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.PRICE" Name="PRICE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O S T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.COST" Name="COST" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S W I T C H E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.SWITCHES" Name="SWITCHES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="T A X E X E M P T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.TAX_EXEMPT" Name="TAX_EXEMPT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S W I T C H E S2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.SWITCHES2" Name="SWITCHES2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A L T G L S A L E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.ALT_GL_SALE" Name="ALT_GL_SALE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="J O B N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.JOB_NUMBER" Name="JOB_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E S H I P P E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_SHIPPED" Name="DATE_SHIPPED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E R E O R D E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_REORDER" Name="DATE_REORDER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A L T S A L E S T A X" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.ALT_SALES_TAX" Name="ALT_SALES_TAX" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="E X T T A X A B L E A M O U N T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.EXT_TAXABLE_AMOUNT" Name="EXT_TAXABLE_AMOUNT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="G L D I V" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.GL_DIV" Name="GL_DIV" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="M A N U F A C T U R E I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.MANUFACTURE_ID" Name="MANUFACTURE_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="R E S T R I C T R E C O R D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.RESTRICT_RECORD" Name="RESTRICT_RECORD" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Q U A N T I T Y R E C E I V E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.QUANTITY_RECEIVED" Name="QUANTITY_RECEIVED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I M A G E I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.IMAGE_ID" Name="IMAGE_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="L O N G D E S C I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.LONGDESC_ID" Name="LONGDESC_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="V E N D O R I N S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.VENDORINS_ID" Name="VENDORINS_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="W A R E H O U S E I N S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.WAREHOUSEINS_ID" Name="WAREHOUSEINS_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="M A S T E R I T E M C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.MASTER_ITEM_CODE" Name="MASTER_ITEM_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I T E M O R D E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.ITEM_ORDER" Name="ITEM_ORDER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E S H I P B Y" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.DATE_SHIP_BY" Name="DATE_SHIP_BY" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C U S T O M S W I T C H E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.CUSTOM_SWITCHES" Name="CUSTOM_SWITCHES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I M P R I N T T E M P L A T E I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.IMPRINT_TEMPLATE_ID" Name="IMPRINT_TEMPLATE_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S H I P T O C O N T A C T I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@lineItem.SHIP_TO_CONTACT_ID" Name="SHIP_TO_CONTACT_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@lineItem.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@lineItem.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

@@ -1,0 +1,116 @@
+@page "/add-tbl-message-usage"
+@attribute [Authorize]
+
+<PageTitle>Add TblMessageUsage</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblMessageUsage</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblMessageUsage" Data="@tblMessageUsage" Visible="@(tblMessageUsage != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Account S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldAccountSID" Name="fldAccountSID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Api Version" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldApiVersion" Name="fldApiVersion" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld As Of" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldAsOf" Name="fldAsOf" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Category" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldCategory" Name="fldCategory" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Category Enum" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldCategoryEnum" Name="fldCategoryEnum" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Count" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldCount" Name="fldCount" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Count Unit" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldCountUnit" Name="fldCountUnit" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Description" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldDescription" Name="fldDescription" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld End Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldEndDate" Name="fldEndDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Price" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldPrice" Name="fldPrice" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Price Unit" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldPriceUnit" Name="fldPriceUnit" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Start Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldStartDate" Name="fldStartDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Subresource Uris" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldSubresourceUris" Name="fldSubresourceUris" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld U R I" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldURI" Name="fldURI" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Usage" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldUsage" Name="fldUsage" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Usage Unit" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldUsageUnit" Name="fldUsageUnit" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblMessageUsage.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

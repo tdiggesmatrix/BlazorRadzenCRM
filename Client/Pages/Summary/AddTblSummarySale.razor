@@ -1,0 +1,289 @@
+@page "/add-tbl-summary-sale"
+@attribute [Authorize]
+
+<PageTitle>Add TblSummarySale</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblSummarySale</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Summary.TblSummarySale" Data="@tblSummarySale" Visible="@(tblSummarySale != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Store Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldStoreRecordID" Name="fldStoreRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldStoreRecordID" Text="fldStoreRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldDate" Name="fldDate" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDate" Text="fldDate is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Gross Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotGrossSales" Name="fldtotGrossSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Gross Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgGrossSales" Name="fldavgGrossSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Gross Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedGrossSales" Name="fldmedGrossSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Net Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotNetSales" Name="fldtotNetSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Net Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgNetSales" Name="fldavgNetSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Net Sales" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedNetSales" Name="fldmedNetSales" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Discounts" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotDiscounts" Name="fldtotDiscounts" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Discounts" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgDiscounts" Name="fldavgDiscounts" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Discounts" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedDiscounts" Name="fldmedDiscounts" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Service Time" Variant="Variant.Filled">
+                  <ChildContent>
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Service Time" Variant="Variant.Filled">
+                  <ChildContent>
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Service Time" Variant="Variant.Filled">
+                  <ChildContent>
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesOilChangeInvoices" Name="fldtotSalesOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesOilChangeInvoices" Name="fldavgSalesOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesOilChangeInvoices" Name="fldmedSalesOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Non Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesNonOilChangeInvoices" Name="fldtotSalesNonOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Non Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesNonOilChangeInvoices" Name="fldavgSalesNonOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Non Oil Change Invoices" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesNonOilChangeInvoices" Name="fldmedSalesNonOilChangeInvoices" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Customer New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesCustomerNew" Name="fldtotSalesCustomerNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Customer New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesCustomerNew" Name="fldavgSalesCustomerNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Customer New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesCustomerNew" Name="fldmedSalesCustomerNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Customer Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesCustomerRepeat" Name="fldtotSalesCustomerRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Customer Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesCustomerRepeat" Name="fldavgSalesCustomerRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Customer Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesCustomerRepeat" Name="fldmedSalesCustomerRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Customer Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesCustomerFleet" Name="fldtotSalesCustomerFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Customer Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesCustomerFleet" Name="fldavgSalesCustomerFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Customer Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesCustomerFleet" Name="fldmedSalesCustomerFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldtot Sales Customer Fleet Non" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldtotSalesCustomerFleetNon" Name="fldtotSalesCustomerFleetNon" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Sales Customer Fleet Non" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgSalesCustomerFleetNon" Name="fldavgSalesCustomerFleetNon" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldmed Sales Customer Fleet Non" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldmedSalesCustomerFleetNon" Name="fldmedSalesCustomerFleetNon" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCount" Name="fldnumInvoiceCount" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Discounts With" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountDiscountsWith" Name="fldnumInvoiceCountDiscountsWith" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Discounts Without" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountDiscountsWithout" Name="fldnumInvoiceCountDiscountsWithout" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Oil Change With" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountOilChangeWith" Name="fldnumInvoiceCountOilChangeWith" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Oil Change Without" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountOilChangeWithout" Name="fldnumInvoiceCountOilChangeWithout" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Customer New" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountCustomerNew" Name="fldnumInvoiceCountCustomerNew" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Customer Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountCustomerRepeat" Name="fldnumInvoiceCountCustomerRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Customer Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountCustomerFleet" Name="fldnumInvoiceCountCustomerFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldnum Invoice Count Customer Non Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldnumInvoiceCountCustomerNonFleet" Name="fldnumInvoiceCountCustomerNonFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldpct Oil Changevs Non Oil Change" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldpctOilChangevsNonOilChange" Name="fldpctOilChangevsNonOilChange" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldpct Newvs Repeat" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldpctNewvsRepeat" Name="fldpctNewvsRepeat" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldpct Fleet Nonvs Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldpctFleetNonvsFleet" Name="fldpctFleetNonvsFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Mileage Between Visits" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgMileageBetweenVisits" Name="fldavgMileageBetweenVisits" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Days Between Visits" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgDaysBetweenVisits" Name="fldavgDaysBetweenVisits" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Mileage Between Visits Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgMileageBetweenVisitsFleet" Name="fldavgMileageBetweenVisitsFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Days Between Visits Fleet" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgDaysBetweenVisitsFleet" Name="fldavgDaysBetweenVisitsFleet" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Mileage Between Visits Fleetnon" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgMileageBetweenVisitsFleetnon" Name="fldavgMileageBetweenVisitsFleetnon" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fldavg Days Between Visits Fleetnon" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldavgDaysBetweenVisitsFleetnon" Name="fldavgDaysBetweenVisitsFleetnon" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblSummarySale.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

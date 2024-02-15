@@ -1,0 +1,88 @@
+@page "/add-tbl-data-dm-s-ft-p-activity"
+@attribute [Authorize]
+
+<PageTitle>Add TblDataDmSFtPActivity</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblDataDmSFtPActivity</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Activity.TblDataDmSFtPActivity" Data="@tblDataDmSFtPActivity" Visible="@(tblDataDmSFtPActivity != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Record I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldRecordID" Name="fldRecordID" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldRecordID" Text="fldRecordID is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Filename" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_Filename" Name="fldDMS_Source_Filename" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDMS_Source_Filename" Text="fldDMS_Source_Filename is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Directory" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_Directory" Name="fldDMS_Source_Directory" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="fldDMS_Source_Directory" Text="fldDMS_Source_Directory is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Size" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_Size" Name="fldDMS_Source_Size" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Discovered Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_Discovered_DateTime" Name="fldDMS_Source_Discovered_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld D M S Source Finalized Date Time" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_Finalized_DateTime" Name="fldDMS_Source_Finalized_DateTime" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="fld D M S Source File Complete" Component="fldDMS_Source_File_Complete" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@tblDataDmSFtPActivity.fldDMS_Source_File_Complete" Name="fldDMS_Source_File_Complete" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenFormField Text="fld Last Modified Date" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldLastModifiedDate" Name="fldLastModifiedDate" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblDataDmSFtPActivity.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

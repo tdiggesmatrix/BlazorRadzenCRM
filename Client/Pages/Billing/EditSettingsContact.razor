@@ -1,0 +1,198 @@
+@page "/edit-settings-contact"
+@attribute [Authorize]
+
+<PageTitle>Edit SettingsContact</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save SettingsContact</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.SettingsContact" Data="@settingsContact" Visible="@(settingsContact != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="dealercode" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.dealercode" Name="dealercode" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="clientstatus" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@settingsContact.clientstatus" Name="clientstatus" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="dealergroup" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.dealergroup" Name="dealergroup" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="franchisegroup" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.franchisegroup" Name="franchisegroup" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="corporatename" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.corporatename" Name="corporatename" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="displayname" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.displayname" Name="displayname" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="printname" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.printname" Name="printname" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="brandname" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.brandname" Name="brandname" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="manager" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.manager" Name="manager" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="address" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.address" Name="address" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="city" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.city" Name="city" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="state" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.state" Name="state" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="zip" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.zip" Name="zip" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="latitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@settingsContact.latitude" Name="latitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="longitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@settingsContact.longitude" Name="longitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="countrycode" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.countrycode" Name="countrycode" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="googleplaceid" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.google_placeid" Name="google_placeid" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="phone" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.phone" Name="phone" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="website" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.website" Name="website" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="emailcontact" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.email_contact" Name="email_contact" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="emailmarketing" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.email_marketing" Name="email_marketing" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="emailreports" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.email_reports" Name="email_reports" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="returnaddress" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.return_address" Name="return_address" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="returncity" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.return_city" Name="return_city" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="returnstate" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.return_state" Name="return_state" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="returnzip" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.return_zip" Name="return_zip" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="hours1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.hours_1" Name="hours_1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="hours2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.hours_2" Name="hours_2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="hours3" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@settingsContact.hours_3" Name="hours_3" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@settingsContact.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@settingsContact.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@settingsContact.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@settingsContact.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

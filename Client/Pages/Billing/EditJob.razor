@@ -1,0 +1,221 @@
+@page "/edit-job"
+@attribute [Authorize]
+
+<PageTitle>Edit Job</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Job</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.Job" Data="@job" Visible="@(job != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="J O B N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.JOB_NUMBER" Name="JOB_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S T A T U S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.STATUS" Name="STATUS" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C U S T O M E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.CUSTOMER" Name="CUSTOMER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O N T A C T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.CONTACT" Name="CONTACT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S A L E S R E P" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.SALES_REP" Name="SALES_REP" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="T Y P E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.TYPE" Name="TYPE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Q U O T E D A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.QUOTE_DATE" Name="QUOTE_DATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="O R D E R D A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.ORDER_DATE" Name="ORDER_DATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C U S T O M E R P O" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.CUSTOMER_PO" Name="CUSTOMER_PO" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D U E D A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.DUE_DATE" Name="DUE_DATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I N V O I C E N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.INVOICE_NUMBER" Name="INVOICE_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I N V O I C E D A T E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.INVOICE_DATE" Name="INVOICE_DATE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E P A I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.DATE_PAID" Name="DATE_PAID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C A R R I E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.CARRIER" Name="CARRIER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="F O B" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.FOB" Name="FOB" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="T A X S T A T E1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.TAX_STATE_1" Name="TAX_STATE_1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S A L E S T A X1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.SALES_TAX_1" Name="SALES_TAX_1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S W I T C H E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.SWITCHES" Name="SWITCHES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S P E C I A L C O M M I S S I O N" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.SPECIAL_COMMISSION" Name="SPECIAL_COMMISSION" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B I L L I N G C U S T O M E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.BILLING_CUSTOMER" Name="BILLING_CUSTOMER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="D A T E C O M P L E T E D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.DATE_COMPLETED" Name="DATE_COMPLETED" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A L T A D D S E Q" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.ALTADD_SEQ" Name="ALTADD_SEQ" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S A L E S T A X N U M B E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.SALES_TAX_NUMBER" Name="SALES_TAX_NUMBER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="G L D I V" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.GL_DIV" Name="GL_DIV" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="R E S T R I C T R E C O R D" Component="RESTRICT_RECORD" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@job.RESTRICT_RECORD" Name="RESTRICT_RECORD" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenFormField Text="B U L K B I L L I N G I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.BULK_BILLING_ID" Name="BULK_BILLING_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="I B S A B I L L I N G I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.IBSA_BILLING_ID" Name="IBSA_BILLING_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S P E C I A L I N S I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.SPECIAL_INS_ID" Name="SPECIAL_INS_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C O S T C E N T E R" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.COST_CENTER" Name="COST_CENTER" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="O R D E R E D B Y C O N T A C T I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.ORDERED_BY_CONTACT_ID" Name="ORDERED_BY_CONTACT_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S H I P T O C O N T A C T I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.SHIP_TO_CONTACT_ID" Name="SHIP_TO_CONTACT_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="B I L L T O C O N T A C T I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.BILL_TO_CONTACT_ID" Name="BILL_TO_CONTACT_ID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="O P E R A T O R C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@job.OPERATOR_CODE" Name="OPERATOR_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@job.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@job.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

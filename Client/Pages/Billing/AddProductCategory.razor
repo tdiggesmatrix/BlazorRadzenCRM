@@ -1,0 +1,71 @@
+@page "/add-product-category"
+@attribute [Authorize]
+
+<PageTitle>Add ProductCategory</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save ProductCategory</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Billing.ProductCategory" Data="@productCategory" Visible="@(productCategory != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="P R O D U C T C A T E G O R Y C O D E" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.PRODUCT_CATEGORY_CODE" Name="PRODUCT_CATEGORY_CODE" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="P R O D U C T C A T E G O R Y D E S C" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.PRODUCT_CATEGORY_DESC" Name="PRODUCT_CATEGORY_DESC" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="C A T E G O R Y S H O R T D E S C" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.CATEGORY_SHORT_DESC" Name="CATEGORY_SHORT_DESC" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S P E C I A L C O M M I S S I O N S E L E C T" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@productCategory.SPECIAL_COMMISSION_SELECT" Name="SPECIAL_COMMISSION_SELECT" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A L T G L S A L E S R E F" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.ALT_GL_SALES_REF" Name="ALT_GL_SALES_REF" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="A L T G L P U R C H A S E R E F" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.ALT_GL_PURCHASE_REF" Name="ALT_GL_PURCHASE_REF" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="S W I T C H E S" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@productCategory.SWITCHES" Name="SWITCHES" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@productCategory.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@productCategory.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@productCategory.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@productCategory.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

@@ -1,0 +1,124 @@
+@page "/add-tbl-customer-brand"
+@attribute [Authorize]
+
+<PageTitle>Add TblCustomerBrand</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save TblCustomerBrand</RadzenAlert>
+        <RadzenTemplateForm TItem="ThrottleCoreCRM.Server.Models.Throttle_Core_Customer.TblCustomerBrand" Data="@tblCustomerBrand" Visible="@(tblCustomerBrand != null && canEdit)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="fld Brand Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldBrandName" Name="fldBrandName" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Address1" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldAddress1" Name="fldAddress1" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Address2" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldAddress2" Name="fldAddress2" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Address3" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldAddress3" Name="fldAddress3" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld City" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldCity" Name="fldCity" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld State" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldState" Name="fldState" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Zip" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldZip" Name="fldZip" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Country" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldCountry" Name="fldCountry" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Phone" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldPhone" Name="fldPhone" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Alternate Phone" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldAlternatePhone" Name="fldAlternatePhone" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Fax" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldFax" Name="fldFax" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Website Url" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldWebsiteUrl" Name="fldWebsiteUrl" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld General Email Address" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldGeneralEmailAddress" Name="fldGeneralEmailAddress" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenRow style="margin-bottom: 1rem">
+                <RadzenColumn SizeMD="3">
+                    <RadzenLabel Text="fld Active" Component="fldActive" style="width: 100%" />
+                </RadzenColumn>
+                <RadzenColumn SizeMD="9">
+                    <RadzenCheckBox @bind-Value="@tblCustomerBrand.fldActive" Name="fldActive" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenFormField Text="fld Latitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldLatitude" Name="fldLatitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Longitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldLongitude" Name="fldLongitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Company Google Places I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldCompanyGooglePlacesID" Name="fldCompanyGooglePlacesID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys User I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldSysUserID" Name="fldSysUserID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Comp I D" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldSysCompID" Name="fldSysCompID" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Created" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldSysDate_Created" Name="fldSysDate_Created" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="fld Sys Date Last Modified" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@tblCustomerBrand.fldSysDate_LastModified" Name="fldSysDate_LastModified" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+
