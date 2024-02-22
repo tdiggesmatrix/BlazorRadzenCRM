@@ -1,0 +1,48 @@
+﻿@page "/dashboard2"
+
+@using ThrottleCoreCRM.Server.Models.Throttle_Core_Summary
+@using Radzen.Blazor
+
+<h3>Dashboard</h3>
+@if (ChartDataList2 != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Placement</th>
+                <th>Vehicle Make</th>
+                <th>Vehicle Model</th>
+                <th>Vehicle</th>
+                <th>Number Serviced</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ChartDataList2)
+            {
+                <tr>
+                    <td>@item.Placement</td>
+                    <td>@item.VehicleMake</td>
+                    <td>@item.VehicleModel</td>
+                    <td>@item.Vehicle</td>
+                    <td>@item.NumberServiced</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    // private IEnumerable<UspDashboardGetStatisticsTopVehiclesServiced> ChartDataList2;
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await LoadChartDataAsync();
+    // }
+
+    // private async Task LoadChartDataAsync()
+    // {
+    //     // Assuming you have a method to fetch data and populate ChartDataList2
+    //     ChartDataList2 = await DataService.GetChartDataAsync();
+    // }
+}

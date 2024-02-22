@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite;
+using ThrottleCoreCRM.Shared.Models;
 
 namespace ThrottleCoreCRM.Server.Data
 {
@@ -265,6 +266,18 @@ namespace ThrottleCoreCRM.Server.Data
         public DbSet<ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteSecuritySetting> TblWebSiteSecuritySettings { get; set; }
 
         public DbSet<ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteUser> TblWebSiteUsers { get; set; }
+
+        public virtual DbSet<GetEmployeesWithDepartment_Result> GetEmployeesWithDepartment_Results { get; set; }
+
+        public IEnumerable<GetEmployeesWithDepartment_Result> SP_GetEmployeesWithDepartment(int id)
+        {
+            // Step 3
+
+            return this.GetEmployeesWithDepartment_Results
+                .FromSqlInterpolated($"[dbo].[GetEmployeesWithDepartment] {id}")
+                .ToList();
+
+        }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {

@@ -1,0 +1,74 @@
+﻿@page "/dd3"
+@using Microsoft.Extensions.Configuration
+@using Microsoft.Data.SqlClient
+@using ThrottleCoreCRM.Server.Models.Throttle_Core_Summary
+@using System.Data
+@inject IConfiguration Configuration
+
+@{
+    List<UspDashboardGetValuesSale> Items = new List<UspDashboardGetValuesSale>();
+
+    string connectionString = Configuration.GetConnectionString("Throttle_Core_DashboardConnection");
+
+    using (var connection = new SqlConnection(connectionString))
+    {
+        connection.Open();
+
+        using (var command = new SqlCommand("usp_Dashboard_Get_Values_Sales", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@WebUserID", 1);
+            command.Parameters.AddWithValue("@CustomerID", 1);
+            command.Parameters.AddWithValue("@Stores", 1);
+            command.Parameters.AddWithValue("@Groups", "1,2,3");
+            command.Parameters.AddWithValue("@StartDate", "11/13/2023");
+            command.Parameters.AddWithValue("@EndDate", "11/13/2023");
+            command.Parameters.AddWithValue("@OnlyActiveStores", 0);
+            command.Parameters.AddWithValue("@ext_Daily", 1);
+            command.Parameters.AddWithValue("@ext_WTD", 0);
+            command.Parameters.AddWithValue("@ext_MTD", 0);
+            command.Parameters.AddWithValue("@ext_YTD", 0);
+            command.Parameters.AddWithValue("@ext_DOD", 0);
+            command.Parameters.AddWithValue("@ext_WOW", 0);
+            command.Parameters.AddWithValue("@ext_MOM", 0);
+            command.Parameters.AddWithValue("@ext_YOY", 0);
+
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Items.Add(new UspDashboardGetValuesSale
+                            {
+                                 ResultType = reader.GetString(reader.GetOrdinal("ResultType"))
+                                //Name = reader.GetString(reader.GetOrdinal("Name"))
+                                // Add other properties if needed
+                            });
+                }
+            }
+        }
+    }
+}
+
+<h1>Sales Values</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Result Type</th>
+            <th>Name</th>
+            <!-- Add other headers if needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Items)
+        {
+            <tr>
+                <td>@item.ResultType</td>
+                @* <td>@item.Name</td> *@
+                <!-- Add other columns if needed -->
+            </tr>
+        }
+    </tbody>
+</table>

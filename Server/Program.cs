@@ -7,6 +7,11 @@ using ThrottleCoreCRM.Server.Data;
 using Microsoft.AspNetCore.Identity;
 using ThrottleCoreCRM.Server.Models;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using ThrottleCoreCRM.Client.Pages;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -39,6 +44,8 @@ builder.Services.AddControllers().AddOData(opt =>
     oDataBuilderThrottle_Core_WebSite.EntitySet<ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteUser>("TblWebSiteUsers");
     opt.AddRouteComponents("odata/Throttle_Core_WebSite", oDataBuilderThrottle_Core_WebSite.GetEdmModel()).Count().Filter().OrderBy().Expand().Select().SetMaxTop(null).TimeZone = TimeZoneInfo.Utc;
 });
+builder.Services.AddScoped<ThrottleCoreCRM.Server.Services.DataService>();
+builder.Services.AddScoped<ThrottleCoreCRM.Client.Services.DataService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_WebSiteService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Server.Throttle_Core_SummaryService>();
 builder.Services.AddDbContext<ThrottleCoreCRM.Server.Data.Throttle_Core_SummaryContext>(options =>

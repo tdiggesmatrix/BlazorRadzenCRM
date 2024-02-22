@@ -1,3 +1,5 @@
+
+using Radzen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,5 +11,8 @@ namespace ThrottleCoreCRM.Server.Models.Throttle_Core_Summary
 {
     public partial class UspDashboardGetValuesSale
     {
+        [Column("Result Type")]
+        [Required]
+        public String ResultType { get; set; }
     }
 }
