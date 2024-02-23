@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace ThrottleCoreCRM.Server.Services
 {
-    public class DataService
+    public class DataService2
     {
         private readonly string _connectionString;
 
-        public DataService(IConfiguration configuration)
+        public DataService2(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("Throttle_Core_DashboardConnection");
         }

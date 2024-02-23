@@ -1,0 +1,48 @@
+﻿@page "/dd3"
+@using System.Net.Http
+
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+@using ThrottleCoreCRM.Server.Models.Throttle_Core_Summary
+
+@inject HttpClient httpClient
+
+<h1>Sales Values</h1>
+
+@if (Items != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Result Type</th>
+                <th>Name</th>
+                <!-- Add other headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Items)
+            {
+                <tr>
+                    <td>@item.ResultType</td>
+                    
+                    <!-- Add other columns if needed -->
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    List<UspDashboardGetValuesSale> Items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //httpClient.BaseAddress = new Uri("https://your-base-uri.com");
+        
+        Items = await httpClient.GetFromJsonAsync<List<UspDashboardGetValuesSale>>("https://localhost:5051/api/servermethods/IAct_UspDashboardGetValuesSale");
+    }
+}

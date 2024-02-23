@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite;
 using ThrottleCoreCRM.Shared.Models;
+using ThrottleCoreCRM.Server.Models.Throttle_Core_Summary;
+using DocumentFormat.OpenXml.InkML;
+using Microsoft.Data.SqlClient;
 
 namespace ThrottleCoreCRM.Server.Data
 {
@@ -278,6 +281,35 @@ namespace ThrottleCoreCRM.Server.Data
                 .ToList();
 
         }
+        public virtual DbSet<UspDashboardGetValuesSale> UspDashboardGetValuesSale_Results { get; set; }
+
+        public IEnumerable<UspDashboardGetValuesSale> SP_UspDashboardGetValuesSale(int webUserId, int customerId, int stores, string groups, string startDate, string endDate, int onlyActiveStores, int extDaily, int extWtd, int extMtd, int extYtd, int extDod, int extWow, int extMom, int extYoy)
+        {
+            var webUserIdParam = new SqlParameter("@WebUserID", webUserId);
+            var customerIdParam = new SqlParameter("@CustomerID", customerId);
+            var storesParam = new SqlParameter("@Stores", stores);
+            var groupsParam = new SqlParameter("@Groups", groups);
+            var startDateParam = new SqlParameter("@StartDate", startDate);
+            var endDateParam = new SqlParameter("@EndDate", endDate);
+            var onlyActiveStoresParam = new SqlParameter("@OnlyActiveStores", onlyActiveStores);
+            var extDailyParam = new SqlParameter("@ext_Daily", extDaily);
+            var extWtdParam = new SqlParameter("@ext_WTD", extWtd);
+            var extMtdParam = new SqlParameter("@ext_MTD", extMtd);
+            var extYtdParam = new SqlParameter("@ext_YTD", extYtd);
+            var extDodParam = new SqlParameter("@ext_DOD", extDod);
+            var extWowParam = new SqlParameter("@ext_WOW", extWow);
+            var extMomParam = new SqlParameter("@ext_MOM", extMom);
+            var extYoyParam = new SqlParameter("@ext_YOY", extYoy);
+
+            using (var context = new Throttle_Core_WebSiteContext()) // Replace Throttle_Core_WebSiteContext with your actual DbContext type
+            {
+                return context.UspDashboardGetValuesSale_Results
+                    .FromSqlRaw("[dbo].[usp_Dashboard_Get_Values_Sales] @WebUserID, @CustomerID, @Stores, @Groups, @StartDate, @EndDate, @OnlyActiveStores, @ext_Daily, @ext_WTD, @ext_MTD, @ext_YTD, @ext_DOD, @ext_WOW, @ext_MOM, @ext_YOY",
+                        webUserIdParam, customerIdParam, storesParam, groupsParam, startDateParam, endDateParam, onlyActiveStoresParam, extDailyParam, extWtdParam, extMtdParam, extYtdParam, extDodParam, extWowParam, extMomParam, extYoyParam)
+                    .ToList();
+            }
+        }
+
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {

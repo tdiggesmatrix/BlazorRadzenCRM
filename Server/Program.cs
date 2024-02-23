@@ -44,8 +44,8 @@ builder.Services.AddControllers().AddOData(opt =>
     oDataBuilderThrottle_Core_WebSite.EntitySet<ThrottleCoreCRM.Server.Models.Throttle_Core_WebSite.TblWebSiteUser>("TblWebSiteUsers");
     opt.AddRouteComponents("odata/Throttle_Core_WebSite", oDataBuilderThrottle_Core_WebSite.GetEdmModel()).Count().Filter().OrderBy().Expand().Select().SetMaxTop(null).TimeZone = TimeZoneInfo.Utc;
 });
-builder.Services.AddScoped<ThrottleCoreCRM.Server.Services.DataService>();
-builder.Services.AddScoped<ThrottleCoreCRM.Client.Services.DataService>();
+
+
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_WebSiteService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Server.Throttle_Core_SummaryService>();
 builder.Services.AddDbContext<ThrottleCoreCRM.Server.Data.Throttle_Core_SummaryContext>(options =>
@@ -148,6 +148,8 @@ builder.Services.AddControllers().AddOData(opt =>
     opt.AddRouteComponents("odata/Throttle_Core_Summary", oDataBuilderThrottle_Core_Summary.GetEdmModel()).Count().Filter().OrderBy().Expand().Select().SetMaxTop(null).TimeZone = TimeZoneInfo.Utc;
 });
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_SummaryService>();
+builder.Services.AddScoped<ThrottleCoreCRM.Server.Services.DataService2>();
+builder.Services.AddScoped<ThrottleCoreCRM.Client.Services.DataService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Server.Throttle_Core_CustomerService>();
 builder.Services.AddDbContext<ThrottleCoreCRM.Server.Data.Throttle_Core_CustomerContext>(options =>
 {

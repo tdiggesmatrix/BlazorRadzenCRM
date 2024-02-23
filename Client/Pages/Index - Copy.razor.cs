@@ -24,7 +24,7 @@ using ThrottleCoreCRM.Server.Models.Throttle_Core_Summary;
 
 namespace ThrottleCoreCRM.Client.Pages
 {
-    public partial class Index
+    public partial class IndexCopy
     {
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
@@ -91,11 +91,7 @@ namespace ThrottleCoreCRM.Client.Pages
             return await response.ReadAsync<UspDashboardGetStatisticsTopVehiclesServiced>();
         }
 
-        public async Task<UspDashboardGetValuesSale> tskUspDashboardGetValuesSales()
-        {
-            var response = await Http.SendAsync(new HttpRequestMessage(HttpMethod.Get, new Uri($"{NavigationManager.BaseUri}api/servermethods/IAct_UspDashboardGetValuesSales")));
-            return await response.ReadAsync<UspDashboardGetValuesSale>();
-        }
+
 
 
 
@@ -103,7 +99,6 @@ namespace ThrottleCoreCRM.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             //Shane put in new line here
-            varUspDashboardGetValuesSale = await tskUspDashboardGetValuesSales();
             varGetEmployeesWithDepartment = await tskGetEmployeesWithDepartment();
             varStats = await tskMonthlyStats();
             varRevenueByCompany = await tskRevenueByCompany();
@@ -149,8 +144,6 @@ namespace ThrottleCoreCRM.Client.Pages
         UspDashboardGetStatisticsTopVehiclesServiced varTopVehiclesServiced { get; set; }
 
         TblSummaryVehicle varSummaryVehicle { get; set; }
-        UspDashboardGetValuesSale varUspDashboardGetValuesSale { get; set; }
-
 
         //Shane - new line in here
         GetEmployeesWithDepartment_Result varGetEmployeesWithDepartment { get; set; }

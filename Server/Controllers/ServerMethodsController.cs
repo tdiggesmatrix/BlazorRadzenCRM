@@ -151,6 +151,29 @@ namespace Throttle_Core_CRM.Server.Controllers
             }));
         }
 
+        public IActionResult IAct_UspDashboardGetValuesSale()
+        {
+            
+                // Step 2
+                var dbvalues = webSiteContext.SP_UspDashboardGetValuesSale(1, 1, 1, "1,2,3,4", "11/1/2023", null, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+                                    .ToList()
+                                    .Select(group => new
+                                    {
+                                        ID = group.ResultType
+
+                                    })
+                                    .OrderBy(group => group.ID)
+                                    .LastOrDefault();
+
+                return Ok(System.Text.Json.JsonSerializer.Serialize(dbvalues, new System.Text.Json.JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = null
+                }));
+            
+        }
+
+
+
 
         //This section of values would be passed to the procedcure
 

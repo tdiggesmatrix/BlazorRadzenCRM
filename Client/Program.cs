@@ -21,7 +21,7 @@ builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_SummaryService>(
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_CustomerService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_ActivityService>();
 builder.Services.AddScoped<ThrottleCoreCRM.Client.Throttle_Core_BillingService>();
-builder.Services.AddSingleton<DataService>();
+builder.Services.AddScoped<ThrottleCoreCRM.Client.Services.DataService>();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddHttpClient("ThrottleCoreCRM.Server", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ThrottleCoreCRM.Server"));

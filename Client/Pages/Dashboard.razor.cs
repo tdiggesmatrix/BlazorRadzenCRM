@@ -12,7 +12,7 @@ namespace ThrottleCoreCRM.Client.Pages
     public partial class Dashboard : ComponentBase
     {
         [Inject]
-        public DataService DataService { get; set; }
+        public DataService DataService2 { get; set; }
 
         private IEnumerable<UspDashboardGetStatisticsTopVehiclesServiced> ChartDataList2;
 
@@ -24,7 +24,7 @@ namespace ThrottleCoreCRM.Client.Pages
         private async Task LoadChartDataAsync()
         {
             // Assuming GetChartDataAsync() returns a DataTable
-            DataTable dataTable = await DataService.GetChartDataAsync();
+            DataTable dataTable = await DataService2.GetChartDataAsync();
 
             // Convert DataTable to a collection of UspDashboardGetStatisticsTopVehiclesServiced objects
             ChartDataList2 = ConvertDataTableToList(dataTable);
